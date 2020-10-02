@@ -27,7 +27,11 @@ const seatCode = [
 	'B11',
 	'B12',
 ];
-
+module.exports.getTrips = (req, res, next) => {
+	return Trip.find()
+		.then(trip => res.status(200).json(trip))
+		.catch(err => res.status(500).json(err));
+};
 module.exports.createTrip = (req, res, next) => {
 	const { fromStationId, toStationId, startTime, price } = req.body;
 	const seats = seatCode.map(code => new Seat({ code }));

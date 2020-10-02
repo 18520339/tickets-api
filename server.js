@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const stationController = require('./controllers/station.controller');
 const tripController = require('./controllers/trip.controller');
 const userController = require('./controllers/user.controller');
-
+const ticketController = require('./controllers/ticket.controller');
 const app = express();
 mongoose
 	.connect('mongodb://localhost:27017/vexere', {
@@ -19,4 +19,5 @@ app.use('/images', express.static('images'));
 app.use('/api', stationController);
 app.use('/api', tripController);
 app.use('/api', userController);
+app.use('/api', ticketController);
 app.listen(5000, () => console.log('App is running on port 5000'));
