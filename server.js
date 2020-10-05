@@ -22,4 +22,6 @@ app.use('/api', stationController);
 app.use('/api', tripController);
 app.use('/api', userController);
 app.use('/api', ticketController);
-app.listen(5000, () => console.log('App is running on port 5000'));
+
+const port = process.env.PORT || 7000;
+app.listen(port, () => console.log(`App is running on port ${port}`));
