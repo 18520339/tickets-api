@@ -1,7 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const util = require('util');
-const { use } = require('../controllers/user.controller');
+
+const config = require('../config');
 const { User } = require('../models/user.model');
 const jwtSign = util.promisify(jwt.sign); // chuyen callback -> promise
 
@@ -36,11 +37,11 @@ module.exports.login = (req, res, next) => {
 			const payload = { _id, email, fullName, userType };
 			// jwtSign.sign(
 			// 	payload,
-			// 	'abcdefghijklmn',
+			// 	config.JWT_SECRET_KEY,
 			// 	{ expiresIn: '1h' },
 			// 	(err, token) => res.send(token),
 			// );
-			return jwtSign(payload, 'abcdefghijklmn', { expiresIn: '1h' });
+			return jwtSign(payload, config.JWT_SECRET_KEY, { expiresIn: '1h' });
 		})
 		.then(token => {
 			res.status(200).json({ message: 'Login successfully', token });
