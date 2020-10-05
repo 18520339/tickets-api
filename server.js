@@ -1,10 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const dotenv = require('dotenv');
+dotenv.config();
+console.log(process.env.NODE_ENV);
+console.log(process.env.MONGO_URI);
+
 const stationController = require('./controllers/station.controller');
 const tripController = require('./controllers/trip.controller');
 const userController = require('./controllers/user.controller');
 const ticketController = require('./controllers/ticket.controller');
+
 const app = express();
 mongoose
 	.connect('mongodb://localhost:27017/vexere', {

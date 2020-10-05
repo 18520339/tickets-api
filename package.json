@@ -5,7 +5,11 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node .",
-		"start:watch": "nodemon ."
+		"start:watch": "nodemon .",
+		"start:local": "NODE_ENV=local nodemon .",
+		"start:staging": "NODE_ENV=staging nodemon .",
+		"start:local:win": "set NODE_ENV=local & nodemon .",
+		"start:staging:win": "set NODE_ENV=staging & nodemon ."
 	},
 	"keywords": [],
 	"author": "",
